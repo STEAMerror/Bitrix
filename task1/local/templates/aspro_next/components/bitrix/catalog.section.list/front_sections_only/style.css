@@ -1,0 +1,9 @@
+@media (max-width: 768px){
+    .section_block .sections_wrapper .list .row .col-xs-6 {
+        width: 50%;
+    }
+    .section_block .sections_wrapper .list .item:not(.section_item) .img {
+        width: 100%;
+        height: auto;
+    }
+}

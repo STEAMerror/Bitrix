@@ -1,0 +1,27 @@
+.middle_info .bx_catalog_item_scu ul li .cnt1{padding-top: 0 !important;}
+.middle_info .bx_catalog_item_scu .bx_scu ul li{width: 190px !important;max-width: 190px !important;display: inline-block}
+.middle_info .bx_catalog_item_scu .bx_item_detail_scu ul li .cnt_item{position: relative !important; width: 190px !important; background-size: contain; background-repeat: no-repeat; height: 60px !important;}
+.catalog_detail .info_item .middle_info .cost.prices{display: none !important;}
+.catalog_detail .info_item .middle_info .buy_block .buys_wrapp.offer_buy_block{display: none !important;}
+.catalog_detail .item_slider .slides_block>li:nth-child(1){display: none !important;}
+.info_item .top_info{display: none !important;}
+.catalog_detail .element_detail_text .price_txt .sharing{display: none !important;}
+.catalog_detail .element_detail_text .price_txt>.sharing+.text{display: none !important;}
+.catalog_detail .item_slider .flex-control-nav>li:nth-child(1){display: none !important;}
+
+.wrapper_inner .info_item .middle_info .buy_block{padding: 0px !important;}
+.wrapper_inner .info_item .middle_info .prices_block{display: none;}
+.container .catalog_detail .item_slider .slides{margin-bottom: 0px !important;}
+.container .catalog_detail .item_slider{padding-top: 0px !important;}
+.item_slider .slides{height:auto !important; line-height: normal !important; margin-top: 50px !important;}
+
+/**убери функцию увеличения фотки - тут неактуально**/
+a .zoom{display: none !important;}
+.fancybox-lock .fancybox-overlay{display: none !important;}
+
+.tabs_section .nav:after{margin-bottom: -212px;}
+.catalog_detail .tabs_section{margin-top: 93px !important;}
+.catalog_detail .tab-pane.active .title-tab-heading+div{padding-left: 10px; padding-right: 10px;}
+.bottom_slider.specials.tab_slider_wrapp .top_blocks{display: none;}
+.catalog_detail+.clearfix+.tab_slider_wrapp{border-top: none !important;}
+.catalog_detail .detail_text{margin-top: 10px;}

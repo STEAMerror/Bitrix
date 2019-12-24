@@ -1,0 +1,4 @@
+.module_products_list tr.item{border: none !important;}
+.sku_props .bx_item_section_name {display: none;}
+.bx_catalog_item_scu .bx_item_detail_scu ul li .cnt_item{width:140px !important; height:60px !important;}
+.module_products_list td.prop_col{width: 140px;}
