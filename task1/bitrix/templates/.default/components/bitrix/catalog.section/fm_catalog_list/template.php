@@ -1,5 +1,4 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<?$this->setFrameMode(true);?>
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?><?$this->setFrameMode(true);?>
 <?if( count( $arResult["ITEMS"] ) >= 1 ){?>
 	<?if($arParams["AJAX_REQUEST"]=="N"){?>
 		<div class="display_list <?=($arParams["SHOW_UNABLE_SKU_PROPS"] != "N" ? "show_un_props" : "unshow_un_props");?>">
@@ -126,6 +125,55 @@
 						else
 							$fast_view_text = GetMessage('FAST_VIEW');?>
 						<div class="fast_view_block" data-event="jqm" data-param-form_id="fast_view" data-param-iblock_id="<?=$arParams["IBLOCK_ID"];?>" data-param-id="<?=$arItem["ID"];?>" data-param-item_href="<?=urlencode($arItem["DETAIL_PAGE_URL"]);?>" data-name="fast_view"><?=$fast_view_text;?></div>
+							<div class="basket_props_block" id="bx_basket_div_<?=$arItem["ID"];?>">
+                                <?
+                                $referer = "";
+                                if(isset($_COOKIE['utm_source'])){
+                                    if(!empty($_COOKIE['utm_source'])) {
+                                        $referer='subid/'.$_COOKIE['utm_source'];
+                                    }
+                                }
+                                ?>
+                                <a class="btn btn-default ofo-href" target="_blank" href="<?=$arItem['OFFERS'][0]['PROPERTIES']['URL2']['VALUE'].$referer?>"><?=GetMessage("LIST_BUTTON_OFO");?></a>
+
+								<?if (!empty($arItem['PRODUCT_PROPERTIES_FILL'])){
+									foreach ($arItem['PRODUCT_PROPERTIES_FILL'] as $propID => $propInfo){?>
+										<input type="hidden" name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]" value="<? echo htmlspecialcharsbx($propInfo['ID']); ?>">
+										<?if (isset($arItem['PRODUCT_PROPERTIES'][$propID]))
+											unset($arItem['PRODUCT_PROPERTIES'][$propID]);
+									}
+								}
+								$arItem["EMPTY_PROPS_JS"]="Y";
+								$emptyProductProperties = empty($arItem['PRODUCT_PROPERTIES']);
+								if (!$emptyProductProperties){
+									$arItem["EMPTY_PROPS_JS"]="N";?>
+									<div class="wrapper">
+										<table>
+											<?foreach ($arItem['PRODUCT_PROPERTIES'] as $propID => $propInfo){?>
+												<tr>
+													<td><? echo $arItem['PROPERTIES'][$propID]['NAME']; ?></td>
+													<td>
+														<?if('L' == $arItem['PROPERTIES'][$propID]['PROPERTY_TYPE']	&& 'C' == $arItem['PROPERTIES'][$propID]['LIST_TYPE']){
+															foreach($propInfo['VALUES'] as $valueID => $value){?>
+																<label>
+																	<input type="radio" name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]" value="<? echo $valueID; ?>" <? echo ($valueID == $propInfo['SELECTED'] ? '"checked"' : ''); ?>><? echo $value; ?>
+																</label>
+															<?}
+														}else{?>
+															<select name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]"><?
+																foreach($propInfo['VALUES'] as $valueID => $value){?>
+																	<option value="<? echo $valueID; ?>" <? echo ($valueID == $propInfo['SELECTED'] ? '"selected"' : ''); ?>><? echo $value; ?></option>
+																<?}?>
+															</select>
+														<?}?>
+													</td>
+												</tr>
+											<?}?>
+										</table>
+									</div>
+									<?
+								}?>
+							</div>
 					</td>
 
 					<td class="description_wrapp">
@@ -299,55 +347,7 @@
 								<?}?>
 							<?}?>
 
-							<div class="basket_props_block" id="bx_basket_div_<?=$arItem["ID"];?>">
-                                <?
-                                $referer = "";
-                                if(isset($_COOKIE['utm_source'])){
-                                    if(!empty($_COOKIE['utm_source'])) {
-                                        $referer='subid/'.$_COOKIE['utm_source'];
-                                    }
-                                }
-                                ?>
-                                <a class="btn btn-default ofo-href" target="_blank" href="<?=$arItem['OFFERS'][0]['PROPERTIES']['URL2']['VALUE'].$referer?>"><?=GetMessage("LIST_BUTTON_OFO");?></a>
 
-								<?if (!empty($arItem['PRODUCT_PROPERTIES_FILL'])){
-									foreach ($arItem['PRODUCT_PROPERTIES_FILL'] as $propID => $propInfo){?>
-										<input type="hidden" name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]" value="<? echo htmlspecialcharsbx($propInfo['ID']); ?>">
-										<?if (isset($arItem['PRODUCT_PROPERTIES'][$propID]))
-											unset($arItem['PRODUCT_PROPERTIES'][$propID]);
-									}
-								}
-								$arItem["EMPTY_PROPS_JS"]="Y";
-								$emptyProductProperties = empty($arItem['PRODUCT_PROPERTIES']);
-								if (!$emptyProductProperties){
-									$arItem["EMPTY_PROPS_JS"]="N";?>
-									<div class="wrapper">
-										<table>
-											<?foreach ($arItem['PRODUCT_PROPERTIES'] as $propID => $propInfo){?>
-												<tr>
-													<td><? echo $arItem['PROPERTIES'][$propID]['NAME']; ?></td>
-													<td>
-														<?if('L' == $arItem['PROPERTIES'][$propID]['PROPERTY_TYPE']	&& 'C' == $arItem['PROPERTIES'][$propID]['LIST_TYPE']){
-															foreach($propInfo['VALUES'] as $valueID => $value){?>
-																<label>
-																	<input type="radio" name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]" value="<? echo $valueID; ?>" <? echo ($valueID == $propInfo['SELECTED'] ? '"checked"' : ''); ?>><? echo $value; ?>
-																</label>
-															<?}
-														}else{?>
-															<select name="<? echo $arParams['PRODUCT_PROPS_VARIABLE']; ?>[<? echo $propID; ?>]"><?
-																foreach($propInfo['VALUES'] as $valueID => $value){?>
-																	<option value="<? echo $valueID; ?>" <? echo ($valueID == $propInfo['SELECTED'] ? '"selected"' : ''); ?>><? echo $value; ?></option>
-																<?}?>
-															</select>
-														<?}?>
-													</td>
-												</tr>
-											<?}?>
-										</table>
-									</div>
-									<?
-								}?>
-							</div>
 
 							<?if(!$arItem["OFFERS"] || $arParams['TYPE_SKU'] !== 'TYPE_1'):?>
 								<div class="counter_wrapp <?=($arItem["OFFERS"] && $arParams["TYPE_SKU"] == "TYPE_1" ? 'woffers' : '')?>">

@@ -2442,7 +2442,7 @@ body .tabs_slider .catalog_item:hover .inner_wrap {border-color:#fff;box-shadow:
     opacity:0;z-index:99;left:50%;top:50%;font-size:13px;
 }
 .with_fast_view .item:hover .fast_view_block, .with_fast_view .catalog_item:hover .fast_view_block, .with_fast_view .catalog_item.hover .fast_view_block{visibility:visible;opacity:1;}
-.with_fast_view .list_item .fast_view_block{position:relative;margin:0px auto;left:0px;top:0px;padding:0px 14px 0px 36px;width:auto;}
+.with_fast_view .list_item .fast_view_block{position:relative;margin:0px auto;left:0px; /*top:0px;*/ padding:0px 14px 0px 36px;width:auto;}
 .with_fast_view .list_item .fast_view_block:before, .icons.fast_view_block:before{content:"";opacity:0.5;position:absolute;left:12px;top:50%;margin-top:-8px;width:17px;height:16px;background:url('images/svg/next.svg') -290px -304px no-repeat;}
 .icons.fast_view_block{font-size:0px;width:50px;height:50px;}
 .with_fast_view .module_products_list .icons.fast_view_block{width:40px;height:40px;margin:0px;top:5px;left:5px;}
@@ -2470,13 +2470,13 @@ hr.bottoms{margin-bottom:30px;}
 .tabs_slider > li > .inner_wrap, .wrapper_block .wr > li > .inner_wrap{padding:20px;}
 
 .image_wrapper_block, .image_wrapper_block a{min-width:70px;height:170px;line-height:170px;margin:0 auto;padding:0px;vertical-align:middle;text-align:center;zoom:1;display:block;}
-.list_item .image_wrapper_block, .list_item .image_wrapper_block a{width:200px;height:200px;line-height:200px;}
+.list_item .image_wrapper_block, .list_item .image_wrapper_block a{width:200px;height:125px;line-height:200px;}
 .list_item .image_wrapper_block, .list_item .image_wrapper_block a{position:relative;}
 .table.catalog .module_products_list .foto-cell .image_wrapper_block, .table.catalog .module_products_list .foto-cell .image_wrapper_block a{position:relative;}
 .image_wrapper_block a{position:relative;}
 .image_wrapper_block a{background-position:50% 50%;background-repeat:no-repeat;}
 
-.image_wrapper_block img{position:absolute;margin:auto;top:0;bottom:0;left:0;right:0;border:0;vertical-align:middle;max-width:100%;max-height:100%;}
+.image_wrapper_block img{position:absolute;margin:0 auto;top:0;bottom:0;left:0;right:0;border:0;vertical-align:middle;max-width:100%;max-height:100%;}
 
 /*likes*/
 .like_icons{position:absolute;top:1px;right:0px;z-index:53;}

@@ -1,3 +1,8 @@
+.with_fast_view .list_item .fast_view_block{top:-80px !important;}
+@media (max-width: 991px) {.basket_props_block{margin-top:20px;}}
+.display_list .description_wrapp .description, .display_list .description_wrapp .information{padding: 0px 0px 0px !important;}
+.information .sku_props {margin:0 !important;}
+
 .sku_props .bx_item_section_name{display: none;}
 .bx_catalog_item_scu .bx_item_detail_scu ul li .cnt_item{width:180px !important; height:70px !important;}
 .display_list .information .offer_buy_block{display: none !important;}
