@@ -464,9 +464,26 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
 						<div class="sku_props">
 							<?if (!empty($arResult['OFFERS_PROP'])){?>
 								<div class="bx_catalog_item_scu wrapper_sku" id="<? echo $arItemIDs["ALL_ITEM_IDS"]['PROP_DIV']; ?>">
+
+
+<div class="logo_img"><?
+$hlblock = \Bitrix\Highloadblock\HighloadBlockTable::getById(4)->fetch(); // id highload блока
+$entity = \Bitrix\Highloadblock\HighloadBlockTable::compileEntity($hlblock);
+$entityClass = $entity->getDataClass();
+
+$res = $entityClass::getList(array(
+'select' => array('*'),
+'filter' => array('UF_XML_ID' => $arResult['OFFERS'][0]['PROPERTIES']['MAGAZIN']['VALUE'])
+));
+if ($row = $res->fetch()) {
+$img_path = CFile::GetPath($row["UF_FILE"]); //ПОЛУЧАЕМ ПУСТЬ К КАРТИНКЕ
+echo '<span><img src="'.$img_path.'" height="60" hspace="5px"></span>'; //ВЫВОДИМ КАРТИНКУ
+}
+?></div>
+
+
 									<?foreach ($arSkuTemplate as $code => $strTemplate){
-										if (!isset($arResult['OFFERS_PROP'][$code]))
-											continue;
+
                                         $strTemplate = str_replace('#ITEM#_prop_', $arItemIDs["ALL_ITEM_IDS"]['PROP'], $strTemplate);
                                         $button_in_store = '';
 

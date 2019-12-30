@@ -4,6 +4,7 @@
 <div class="form">
 	<div class="form_head">
 		<h2><?=\Bitrix\Main\Localization\Loc::getMessage('FAST_VIEW');?></h2>
+		<div class="img_logo"></div>
 	</div>
 	<?
 	if(isset($_GET['iblock_id']) && $_GET['iblock_id'])
@@ -44,6 +45,7 @@
 					BX.ajax.processScripts(ob.SCRIPT);
 					$('#fast_view_item').closest('.form').addClass('init');
 					$('.fast_view_frame h2').html($('#fast_view_item .title.hidden').html());
+					$('.fast_view_frame .img_logo').html($('.logo_img').html());
 
 					initCountdown();
 					setBasketStatusBtn();

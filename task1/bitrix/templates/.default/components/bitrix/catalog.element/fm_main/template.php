@@ -1406,6 +1406,7 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
                                         </div>
                                     <?else:?>
                                         <table class="props_list">
+											<?$title = htmlspecialcharsex($arResult[0]["TITLE"]);?>
                                             <?foreach($arResult["DISPLAY_PROPERTIES"] as $arProp):?>
                                                 <?if(!in_array($arProp["CODE"], array("SERVICES", "BRAND", "HIT", "RECOMMEND", "NEW", "STOCK", "VIDEO", "VIDEO_YOUTUBE", "CML2_ARTICLE"))):?>
                                                     <?if((!is_array($arProp["DISPLAY_VALUE"]) && strlen($arProp["DISPLAY_VALUE"])) || (is_array($arProp["DISPLAY_VALUE"]) && implode('', $arProp["DISPLAY_VALUE"]))):?>
@@ -1418,11 +1419,12 @@ setViewedProduct(<?=$arResult['ID']?>, <?=CUtil::PhpToJSObject($arViewedData, fa
                                                             </td>
                                                             <td class="char_value">
 														<span itemprop="value">
-															<?if(count($arProp["DISPLAY_VALUE"]) > 1):?>
+															<?=$arResult['CATEGORY_PATH'];?>
+															<!--<?if(count($arProp["DISPLAY_VALUE"]) > 1):?>
                                                                 <?=implode(', ', $arProp["DISPLAY_VALUE"]);?>
                                                             <?else:?>
-                                                                <?=$arProp["DISPLAY_VALUE"];?>
-                                                            <?endif;?>
+                                                           <?=$arProp["DISPLAY_VALUE"];?>
+                                                            <?endif;?>--!>
 														</span>
                                                             </td>
                                                         </tr>
